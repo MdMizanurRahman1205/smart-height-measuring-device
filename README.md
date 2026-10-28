@@ -1,4 +1,4 @@
-# smart-height-measuring-device-
+# smart-height-measuring-device
 Build your own Ultrasonic Height Meter using Arduino UNO! 📏🔧
 
 In this DIY electronics project, I built a simple and low-cost digital height measurement system using an HC-SR04 ultrasonic sensor, Arduino UNO, LCD display and a push button.
