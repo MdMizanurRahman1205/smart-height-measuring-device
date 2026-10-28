@@ -36,7 +36,7 @@ Person's Height = Sensor Height − Measured Distance
 The result is converted into cm, meters and feet and displayed on the LCD.
 
 Circuit Diagram: https://sites.google.com/view/electrosurgeon/project/smart-height-measuring-device
-Code : https://sites.google.com/view/electrosurgeon/project/smart-height-measuring-device
+Code : [https://sites.google.com/view/electrosurgeon/project/smart-height-measuring-device](https://MdMizanurRahman1205.github.io/smart-height-measuring-device/)
 
 👨‍🔧 Built by
 Electro_Surgeon | Md Mizanur Rahman
