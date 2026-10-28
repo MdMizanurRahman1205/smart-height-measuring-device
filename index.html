@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080d18">
-<meta name="description" content="Build the ElectroSurgeon Ultrasonic Height Meter using Arduino UNO, HC-SR04 and an I2C LCD. Watch the tutorial, download the source code and follow the wiring guide.">
+<meta name="description" content="Build the ElectroSurgeon Ultrasonic Height Meter using Arduino UNO, HC-SR04 and an I2C LCD. Watch the tutorial, explore components, download source code and follow the wiring guide.">
 
 <title>Ultrasonic Height Meter | ElectroSurgeon</title>
 
@@ -21,7 +21,12 @@
   --green:#61e6b1;
 }
 * { box-sizing:border-box; }
-html { scroll-behavior:smooth; scroll-padding-top:20px; }
+
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:20px;
+}
+
 body {
   margin:0;
   background:
@@ -32,9 +37,14 @@ body {
   font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   line-height:1.6;
 }
+
 a { color:var(--cyan); text-decoration:none; }
 a:hover { text-decoration:underline; }
-.wrap { width:min(1120px,92%); margin:auto; }
+
+.wrap {
+  width:min(1120px,92%);
+  margin:auto;
+}
 
 .nav {
   display:flex;
@@ -43,6 +53,7 @@ a:hover { text-decoration:underline; }
   padding:22px 0;
   border-bottom:1px solid #ffffff12;
 }
+
 .brand {
   display:flex;
   align-items:center;
@@ -50,6 +61,7 @@ a:hover { text-decoration:underline; }
   font-weight:850;
   letter-spacing:.4px;
 }
+
 .logo {
   width:42px;
   height:42px;
@@ -61,12 +73,13 @@ a:hover { text-decoration:underline; }
   font-weight:950;
   font-size:20px;
 }
+
 .navlinks {
   display:flex;
-  gap:20px;
+  gap:18px;
   font-size:14px;
-  color:var(--muted);
 }
+
 .navlinks a { color:var(--muted); }
 .navlinks a:hover { color:var(--cyan); }
 
@@ -77,6 +90,7 @@ a:hover { text-decoration:underline; }
   align-items:center;
   padding:70px 0 55px;
 }
+
 .eyebrow {
   display:inline-flex;
   gap:8px;
@@ -87,6 +101,7 @@ a:hover { text-decoration:underline; }
   letter-spacing:1.8px;
   text-transform:uppercase;
 }
+
 .dot {
   width:7px;
   height:7px;
@@ -94,24 +109,29 @@ a:hover { text-decoration:underline; }
   border-radius:50%;
   box-shadow:0 0 12px var(--green);
 }
+
 h1 {
   font-size:clamp(38px,5.7vw,68px);
   line-height:1.03;
   letter-spacing:-2.4px;
   margin:17px 0;
 }
+
 h1 span { color:var(--cyan); }
+
 .lead {
   font-size:17px;
   color:var(--muted);
   max-width:650px;
 }
+
 .actions,.tutorial-actions {
   display:flex;
   gap:12px;
   flex-wrap:wrap;
   margin-top:27px;
 }
+
 .btn {
   display:inline-flex;
   justify-content:center;
@@ -127,18 +147,25 @@ h1 span { color:var(--cyan); }
   text-align:center;
   transition:transform .2s,border-color .2s;
 }
+
 .btn:hover {
   text-decoration:none;
   transform:translateY(-2px);
 }
+
 .btn.primary {
   background:linear-gradient(120deg,var(--cyan),#83edff);
   color:#07101b;
   border:0;
   box-shadow:0 9px 30px #38d9ff22;
 }
+
 .btn.secondary:hover { border-color:var(--cyan); }
-.note,.small { font-size:12px; color:var(--muted); }
+
+.note,.small {
+  font-size:12px;
+  color:var(--muted);
+}
 
 .device {
   position:relative;
@@ -149,6 +176,7 @@ h1 span { color:var(--cyan); }
   box-shadow:0 25px 80px #0008;
   overflow:hidden;
 }
+
 .device-top {
   display:flex;
   justify-content:space-between;
@@ -157,6 +185,7 @@ h1 span { color:var(--cyan); }
   font-size:12px;
   color:var(--muted);
 }
+
 .pill {
   border:1px solid #31526b;
   border-radius:99px;
@@ -165,6 +194,7 @@ h1 span { color:var(--cyan); }
   font-size:11px;
   white-space:nowrap;
 }
+
 .lcd {
   background:#07160f;
   border:8px solid #34485a;
@@ -172,24 +202,28 @@ h1 span { color:var(--cyan); }
   padding:24px 16px;
   margin:24px 0 18px;
 }
+
 .lcd small {
   display:block;
   color:#82dca8;
   font-family:monospace;
   letter-spacing:2px;
 }
+
 .lcd strong {
   display:block;
   color:#b7ffcb;
   font:800 clamp(28px,4vw,43px)/1.2 monospace;
   margin-top:8px;
 }
+
 .sensor {
   display:flex;
   justify-content:center;
   gap:12px;
   margin:20px auto 8px;
 }
+
 .eye {
   width:62px;
   height:62px;
@@ -198,6 +232,7 @@ h1 span { color:var(--cyan); }
   background:radial-gradient(circle,#101e31 0 35%,#a4c4d4 37% 43%,#18283a 46%);
   box-shadow:inset 0 0 15px #000;
 }
+
 .device-caption {
   text-align:center;
   font-size:12px;
@@ -210,22 +245,27 @@ h1 span { color:var(--cyan); }
   gap:12px;
   margin:0 0 45px;
 }
+
 .stat {
   border:1px solid var(--line);
   background:#0e1726b8;
   border-radius:15px;
   padding:18px;
 }
+
 .stat b { font-size:20px; display:block; }
 .stat span { font-size:12px; color:var(--muted); }
 
 section { padding:28px 0 38px; }
+
 .section-head { margin-bottom:22px; }
+
 .section-head h2 {
   font-size:29px;
   letter-spacing:-.6px;
   margin:0 0 6px;
 }
+
 .section-head p { color:var(--muted); margin:0; }
 
 .grid {
@@ -233,12 +273,14 @@ section { padding:28px 0 38px; }
   grid-template-columns:repeat(3,1fr);
   gap:14px;
 }
+
 .card {
   background:linear-gradient(145deg,#111d30,#0b1321);
   border:1px solid var(--line);
   border-radius:17px;
   padding:21px;
 }
+
 .card .icon { font-size:25px; }
 .card h3 { margin:10px 0 5px; font-size:17px; }
 .card p,.card li { font-size:14px; color:var(--muted); }
@@ -249,16 +291,49 @@ section { padding:28px 0 38px; }
   grid-template-columns:1fr 1fr;
   gap:16px;
 }
-.component-list { list-style:none; margin:0; padding:0; }
+
+.component-list {
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
 .component-list li {
   display:flex;
   justify-content:space-between;
+  align-items:center;
   gap:12px;
   border-bottom:1px solid #ffffff10;
-  padding:10px 0;
+  padding:12px 0;
   color:var(--muted);
 }
-.component-list li b { color:var(--text); font-weight:650; }
+
+.component-list li:last-child { border-bottom:none; }
+
+.component-list li b {
+  color:var(--text);
+  font-weight:650;
+}
+
+/* CLICKABLE COMPONENT LINKS */
+.component-list li a {
+  color:var(--text);
+  text-decoration:none;
+  flex:1;
+  min-width:0;
+  transition:color .2s ease;
+}
+
+.component-list li a:hover {
+  color:var(--cyan);
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+
+.component-list li a b {
+  font-weight:650;
+}
+
 .tag {
   font-size:11px;
   border:1px solid #31526b;
@@ -266,6 +341,7 @@ section { padding:28px 0 38px; }
   padding:3px 8px;
   border-radius:99px;
   white-space:nowrap;
+  flex-shrink:0;
 }
 
 .wiring {
@@ -273,23 +349,31 @@ section { padding:28px 0 38px; }
   border-collapse:collapse;
   font-size:14px;
 }
+
 .wiring th,.wiring td {
   text-align:left;
   padding:11px;
   border-bottom:1px solid #ffffff12;
 }
+
 .wiring th {
   color:var(--cyan);
   font-size:12px;
   text-transform:uppercase;
   letter-spacing:1px;
 }
+
 .wiring td:last-child {
   font-family:monospace;
   color:#ffe0b9;
 }
 
-.steps { counter-reset:step; display:grid; gap:12px; }
+.steps {
+  counter-reset:step;
+  display:grid;
+  gap:12px;
+}
+
 .step {
   display:flex;
   gap:15px;
@@ -299,6 +383,7 @@ section { padding:28px 0 38px; }
   border-radius:14px;
   background:#0e1726;
 }
+
 .step:before {
   counter-increment:step;
   content:counter(step);
@@ -311,7 +396,12 @@ section { padding:28px 0 38px; }
   color:var(--cyan);
   font-weight:900;
 }
-.step p { margin:3px 0 0; color:var(--muted); font-size:14px; }
+
+.step p {
+  margin:3px 0 0;
+  color:var(--muted);
+  font-size:14px;
+}
 
 .warning {
   border:1px solid #79512e;
@@ -321,36 +411,43 @@ section { padding:28px 0 38px; }
   color:#ffd9b3;
   font-size:14px;
 }
+
 .warning b { color:#fff0dd; }
 
 /* YOUTUBE TUTORIAL */
 .tutorial-section { padding:45px 0; }
+
 .tutorial-heading {
   text-align:center;
   margin-bottom:25px;
 }
+
 .tutorial-heading h2 {
   font-size:clamp(26px,4vw,36px);
   margin:12px 0 8px;
 }
+
 .tutorial-heading p {
   color:var(--muted);
   max-width:650px;
   margin:0 auto;
 }
+
 .tutorial-card {
   overflow:hidden;
-  border:1px solid #24334a;
+  border:1px solid var(--line);
   border-radius:22px;
   background:linear-gradient(145deg,#111d30,#0b1321);
   box-shadow:0 20px 50px #0005;
 }
+
 .tutorial-thumbnail {
   display:block;
   position:relative;
   background:#050a12;
   overflow:hidden;
 }
+
 .tutorial-thumbnail img {
   display:block;
   width:100%;
@@ -358,7 +455,9 @@ section { padding:28px 0 38px; }
   object-fit:cover;
   transition:transform .35s ease;
 }
+
 .tutorial-thumbnail:hover img { transform:scale(1.025); }
+
 .play-button {
   position:absolute;
   top:50%;
@@ -373,13 +472,14 @@ section { padding:28px 0 38px; }
   border-radius:15px;
   font-size:27px;
   box-shadow:0 8px 30px #0008;
-  transition:background .2s,transform .2s;
 }
+
 .tutorial-thumbnail:hover .play-button {
   background:#e6002e;
-  transform:translate(-50%,-50%) scale(1.08);
 }
+
 .tutorial-content { padding:25px; }
+
 .youtube-label {
   color:#ff637d;
   font-size:12px;
@@ -388,17 +488,20 @@ section { padding:28px 0 38px; }
   text-transform:uppercase;
   margin-bottom:10px;
 }
+
 .tutorial-content h3 {
   font-size:23px;
   margin:0 0 10px;
 }
+
 .tutorial-content p {
   color:var(--muted);
   margin:0 0 20px;
 }
+
 .tutorial-actions { margin-top:0; }
 
-/* FOOTER */
+/* DOWNLOAD SECTION */
 .download {
   display:flex;
   justify-content:space-between;
@@ -406,8 +509,16 @@ section { padding:28px 0 38px; }
   align-items:center;
   flex-wrap:wrap;
 }
+
 .download h3 { margin:0; }
-.download p { margin:5px 0; color:var(--muted); font-size:14px; }
+
+.download p {
+  margin:5px 0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* FOOTER */
 .footer {
   margin-top:35px;
   border-top:1px solid #ffffff14;
@@ -419,7 +530,13 @@ section { padding:28px 0 38px; }
   gap:20px;
   flex-wrap:wrap;
 }
-.socials { display:flex; gap:16px; flex-wrap:wrap; }
+
+.socials {
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
 code {
   color:#b7ffcb;
   background:#08120f;
@@ -435,6 +552,7 @@ code {
   .navlinks { display:none; }
   .stats { grid-template-columns:1fr 1fr; }
 }
+
 @media(max-width:520px) {
   .grid { grid-template-columns:1fr; }
   .stats { grid-template-columns:1fr 1fr; }
@@ -467,7 +585,7 @@ code {
 
 <main id="top" class="wrap">
 
-  <!-- HERO -->
+  <!-- HERO SECTION -->
   <div class="hero">
     <div>
       <div class="eyebrow"><span class="dot"></span> DIY EMBEDDED PROJECT</div>
@@ -477,7 +595,8 @@ code {
       <p class="lead">
         A practical Arduino UNO project that measures a person's height
         using an HC-SR04 ultrasonic sensor and displays the result on an
-        I²C LCD. Get the source code, check the wiring, and build your own.
+        I²C LCD. Watch the tutorial, explore the components, and download
+        the Arduino source code to build your own.
       </p>
 
       <div class="actions">
@@ -491,7 +610,9 @@ code {
         <a class="btn secondary" href="#install">Setup Guide ↘</a>
       </div>
 
-      <p class="note">Arduino UNO · HC-SR04 · 16×2 I²C LCD · No account required</p>
+      <p class="note">
+        Arduino UNO · HC-SR04 · 16×2 I²C LCD · No account required
+      </p>
     </div>
 
     <div class="device">
@@ -503,7 +624,9 @@ code {
       <div class="lcd">
         <small>HEIGHT METER READY</small>
         <strong>171.1 cm</strong>
-        <small style="margin-top:10px;letter-spacing:1px">PRESS BUTTON TO CHANGE UNIT</small>
+        <small style="margin-top:10px;letter-spacing:1px">
+          PRESS BUTTON TO CHANGE UNIT
+        </small>
       </div>
 
       <div class="sensor">
@@ -523,10 +646,12 @@ code {
       <b>3 Units</b>
       <span>cm · meters · feet</span>
     </div>
+
     <div class="stat">
       <b>7 ft</b>
       <span>Default sensor mounting height</span>
     </div>
+
     <div class="stat">
       <b>Arduino UNO</b>
       <span>ATmega328P-compatible board</span>
@@ -543,63 +668,149 @@ code {
     <div class="grid">
       <article class="card">
         <div class="icon">📏</div>
-        <h3>Height calculation</h3>
-        <p>Calculates height by subtracting the sensor-to-head distance from the fixed sensor mounting height.</p>
+        <h3>Height Calculation</h3>
+        <p>
+          Calculates height by subtracting the sensor-to-head distance
+          from the fixed sensor mounting height.
+        </p>
       </article>
 
       <article class="card">
         <div class="icon">🖥️</div>
-        <h3>LCD readout</h3>
-        <p>Displays the measured height on a 16×2 I²C LCD with one decimal place for centimeters.</p>
+        <h3>LCD Readout</h3>
+        <p>
+          Displays the measured height on a 16×2 I²C LCD with one
+          decimal place for centimeters.
+        </p>
       </article>
 
       <article class="card">
         <div class="icon">🔘</div>
-        <h3>One-button unit switch</h3>
-        <p>Cycle through centimeters, meters, and feet using a push button connected to digital pin D2.</p>
+        <h3>One-Button Unit Switch</h3>
+        <p>
+          Cycle through centimeters, meters, and feet using a push
+          button connected to digital pin D2.
+        </p>
       </article>
     </div>
   </section>
 
-  <!-- COMPONENTS -->
+  <!-- COMPONENTS WITH CLICKABLE LINKS -->
   <section id="components">
     <div class="section-head">
-      <h2>Required components</h2>
-      <p>Gather these parts before assembling the circuit.</p>
+      <h2>Required Components</h2>
+      <p>
+        Click any component name to explore available options online.
+      </p>
     </div>
 
     <div class="components">
+
       <div class="card">
         <ul class="component-list">
-          <li><b>Arduino UNO R3</b><span class="tag">1 ×</span></li>
-          <li><b>HC-SR04 ultrasonic sensor</b><span class="tag">1 ×</span></li>
-          <li><b>16×2 I²C LCD</b><span class="tag">1 ×</span></li>
-          <li><b>Tactile push button</b><span class="tag">1 ×</span></li>
-          <li><b>Breadboard or Veroboard</b><span class="tag">1 ×</span></li>
+
+          <li>
+            <a href="https://link.amazon/B02FlD6bK"
+               target="_blank" rel="noopener noreferrer">
+              <b>Arduino UNO</b>
+            </a>
+            <span class="tag">1 ×</span>
+          </li>
+
+          <li>
+            <a href="https://link.amazon/B044dNrNi"
+               target="_blank" rel="noopener noreferrer">
+              <b>HC-SR04 Ultrasonic Sensor</b>
+            </a>
+            <span class="tag">1 ×</span>
+          </li>
+
+          <li>
+            <a href="https://link.amazon/B044dNrNi"
+               target="_blank" rel="noopener noreferrer">
+              <b>16×2 I²C LCD</b>
+            </a>
+            <span class="tag">1 ×</span>
+          </li>
+
+          <li>
+            <a href="https://link.amazon/B0gkK9VZ4"
+               target="_blank" rel="noopener noreferrer">
+              <b>Tactile Push Button</b>
+            </a>
+            <span class="tag">1 ×</span>
+          </li>
+
+          <li>
+            <a href="https://link.amazon/B0i0OA8Iu"
+               target="_blank" rel="noopener noreferrer">
+              <b>Breadboard or Veroboard</b>
+            </a>
+            <span class="tag">1 ×</span>
+          </li>
+
         </ul>
       </div>
 
       <div class="card">
         <ul class="component-list">
-          <li><b>Jumper wires</b><span class="tag">As needed</span></li>
-          <li><b>USB cable for UNO</b><span class="tag">1 ×</span></li>
-          <li><b>5V USB power supply</b><span class="tag">1 ×</span></li>
-          <li><b>Sensor mounting bracket</b><span class="tag">1 ×</span></li>
-          <li><b>Enclosure</b><span class="tag">Optional</span></li>
+
+          <li>
+            <a href="https://link.amazon/B0deh8iVC"
+               target="_blank" rel="noopener noreferrer">
+              <b>Jumper Wires</b>
+            </a>
+            <span class="tag">As needed</span>
+          </li>
+
+          <li>
+            <a href="https://link.amazon/B02FlD6bK"
+               target="_blank" rel="noopener noreferrer">
+              <b>USB Cable for UNO</b>
+            </a>
+            <span class="tag">1 ×</span>
+          </li>
+
+          <li>
+            <a href="https://link.amazon/B0cCKbGm6"
+               target="_blank" rel="noopener noreferrer">
+              <b>12V USB Power Supply</b>
+            </a>
+            <span class="tag">1 ×</span>
+          </li>
+
+          <li>
+            <a href="https://www.amazon.in/s?k=HC-SR04+sensor+mounting+bracket"
+               target="_blank" rel="noopener noreferrer">
+              <b>Sensor Mounting Bracket</b>
+            </a>
+            <span class="tag">1 ×</span>
+          </li>
+
+          <li>
+            <a href="https://www.amazon.in/s?k=Arduino+UNO+project+enclosure"
+               target="_blank" rel="noopener noreferrer">
+              <b>Project Enclosure</b>
+            </a>
+            <span class="tag">Optional</span>
+          </li>
+
         </ul>
 
         <p class="small">
-          The LCD module should have an I²C backpack. The code defaults to
-          I²C address <code>0x27</code>; some modules use <code>0x3F</code>.
+          The LCD module should have an I²C backpack. The code defaults
+          to I²C address <code>0x27</code>; some modules use
+          <code>0x3F</code>. Product availability and prices may vary.
         </p>
       </div>
+
     </div>
   </section>
 
   <!-- WIRING -->
   <section id="wiring">
     <div class="section-head">
-      <h2>Wiring connections</h2>
+      <h2>Wiring Connections</h2>
       <p>Connect the modules to the Arduino UNO as shown.</p>
     </div>
 
@@ -607,7 +818,7 @@ code {
       <table class="wiring">
         <thead>
           <tr>
-            <th>Component pin</th>
+            <th>Component Pin</th>
             <th>Arduino UNO</th>
           </tr>
         </thead>
@@ -632,14 +843,13 @@ code {
       <div class="eyebrow">▶ ELECTROSURGEON VIDEO GUIDE</div>
       <h2>Watch the Project Tutorial</h2>
       <p>
-        Follow the video tutorial, understand the project, and build your
-        own Ultrasonic Height Meter.
+        Watch the original video tutorial and follow along as you
+        build your own Ultrasonic Height Meter.
       </p>
     </div>
 
     <div class="tutorial-card">
 
-      <!-- Original YouTube thumbnail -->
       <a
         class="tutorial-thumbnail"
         href="https://youtu.be/owLx1l-V7uQ"
@@ -657,18 +867,18 @@ code {
       </a>
 
       <div class="tutorial-content">
-
         <div class="youtube-label">▶ YouTube Tutorial</div>
 
         <h3>Ultrasonic Height Meter | ElectroSurgeon</h3>
 
         <p>
-          Watch the project demonstration and follow along with the
-          hardware setup. Download the Arduino sketch below and use
-          the wiring guide on this page to get started.
+          Watch the project demonstration, understand the hardware setup,
+          and follow the wiring guide. Download the Arduino sketch to
+          start building your own version.
         </p>
 
         <div class="tutorial-actions">
+
           <a
             class="btn primary"
             href="https://youtu.be/owLx1l-V7uQ"
@@ -684,16 +894,17 @@ code {
           <a class="btn secondary" href="#wiring">
             Check Wiring
           </a>
-        </div>
 
+        </div>
       </div>
+
     </div>
   </section>
 
   <!-- UPLOAD INSTRUCTIONS -->
   <section id="install">
     <div class="section-head">
-      <h2>Upload the firmware</h2>
+      <h2>Upload the Firmware</h2>
       <p>Use the Arduino IDE for this Arduino UNO version.</p>
     </div>
 
@@ -701,7 +912,7 @@ code {
 
       <div class="step">
         <div>
-          <b>Download the sketch</b>
+          <b>Download the Sketch</b>
           <p>
             Click the download button to save
             <code>Ultrasonic_Height_Meter.ino</code>.
@@ -711,9 +922,9 @@ code {
 
       <div class="step">
         <div>
-          <b>Install the LCD library</b>
+          <b>Install the LCD Library</b>
           <p>
-            In Arduino IDE, open Library Manager and install a compatible
+            Open Library Manager in Arduino IDE and install a compatible
             <code>LiquidCrystal_I2C</code> library.
           </p>
         </div>
@@ -721,9 +932,9 @@ code {
 
       <div class="step">
         <div>
-          <b>Connect your board</b>
+          <b>Connect Your Board</b>
           <p>
-            Connect the Arduino UNO by USB, then choose
+            Connect the Arduino UNO by USB. Choose
             <b>Tools → Board → Arduino UNO</b> and select the correct port.
           </p>
         </div>
@@ -731,7 +942,7 @@ code {
 
       <div class="step">
         <div>
-          <b>Verify and upload</b>
+          <b>Verify and Upload</b>
           <p>
             Open the downloaded sketch, click Verify, then Upload.
             Open Serial Monitor at <code>9600 baud</code> to see readings.
@@ -745,8 +956,9 @@ code {
       <b>About browser-based flashing</b><br>
       This project targets the classic Arduino UNO. ESP Web Tools is
       designed for ESP-family firmware and cannot directly flash this
-      UNO sketch. Use Arduino IDE for now; a browser-based UNO flasher
-      needs a compatible AVR flashing implementation and compiled firmware image.
+      UNO sketch. Use Arduino IDE for now; browser-based UNO flashing
+      requires a compatible AVR flashing implementation and compiled
+      firmware image.
     </div>
   </section>
 
@@ -754,15 +966,17 @@ code {
   <section>
     <div class="card download">
       <div>
-        <h3>Ready to build?</h3>
-        <p>Download the sketch and start wiring your own digital height meter.</p>
+        <h3>Ready to Build?</h3>
+        <p>
+          Download the sketch and start wiring your own digital height meter.
+        </p>
       </div>
 
       <a
         class="btn primary"
         href="./Ultrasonic_Height_Meter.ino"
         download="Ultrasonic_Height_Meter.ino">
-        ↓ Get the .INO file
+        ↓ Get the .INO File
       </a>
     </div>
   </section>
@@ -780,16 +994,24 @@ code {
 
   <div class="socials">
     <a href="https://www.youtube.com/@electrosurgeon"
-       target="_blank" rel="noopener noreferrer">▶ YouTube</a>
+       target="_blank" rel="noopener noreferrer">
+      ▶ YouTube
+    </a>
 
     <a href="https://www.instagram.com/electro_surgeon/"
-       target="_blank" rel="noopener noreferrer">◎ Instagram</a>
+       target="_blank" rel="noopener noreferrer">
+      ◎ Instagram
+    </a>
 
     <a href="https://sites.google.com/view/electrosurgeon"
-       target="_blank" rel="noopener noreferrer">⌂ Website</a>
+       target="_blank" rel="noopener noreferrer">
+      ⌂ Website
+    </a>
 
     <a href="https://www.linkedin.com/in/md-mizanur-rahman-0990bb322/"
-       target="_blank" rel="noopener noreferrer">in LinkedIn</a>
+       target="_blank" rel="noopener noreferrer">
+      in LinkedIn
+    </a>
   </div>
 
   <div>Made with ⚡ by ElectroSurgeon</div>
